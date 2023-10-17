@@ -10,9 +10,11 @@ from models import Product, Cart
 def product():
     return Product("book", 100, "This is a book", 1000)
 
+
 @pytest.fixture
 def second_product():
     return Product("pencil", 50, "This is a pencil", 500)
+
 
 @pytest.fixture
 def cart():
@@ -43,7 +45,6 @@ class TestProducts:
         #  которые ожидают ошибку ValueError при попытке купить больше, чем есть в наличии
         with pytest.raises(ValueError):
             product.buy(product.quantity + 1)
-
 
 
 class TestCart:
