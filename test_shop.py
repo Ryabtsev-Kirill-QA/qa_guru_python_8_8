@@ -98,12 +98,13 @@ class TestCart:
 
     def test_buy(self, product, cart):
         cart.add_product(product, buy_count=5)
-        cart.buy(5)
+        cart.buy()
         # Проверка, что после покупки, количество товара в корзине уменьшилось на количество купленного
-        assert cart.products.get(product) == 0
+        assert product not in cart.products
+        assert product.quantity == 995
 
     def test_buy_more_than_available(self, product, cart):
         cart.add_product(product, buy_count=5000)
         # Проверка ошибки при покупке больше, чем есть на складе
         with pytest.raises(ValueError):
-            cart.buy(5000)
+            cart.buy()
