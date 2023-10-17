@@ -74,7 +74,7 @@ class Cart:
     def clear(self):
         self.products = {}
 
-    def get_total_price(self, product: Product) -> float:
+    def get_total_price(self) -> float:
         return sum([quantity * product.price for product, quantity in self.products.items()])
 
     def buy(self, quantity):

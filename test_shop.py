@@ -94,7 +94,7 @@ class TestCart:
         cart.add_product(product, buy_count=5)
         cart.add_product(second_product, buy_count=10)
         # Проверка расчета полной стоимости товаров в корзине
-        assert cart.get_total_price(product) == 500 + 500
+        assert cart.get_total_price() == 500 + 500
 
     def test_buy(self, product, cart):
         cart.add_product(product, buy_count=5)
