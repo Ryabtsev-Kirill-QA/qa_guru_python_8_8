@@ -66,11 +66,17 @@ class TestCart:
         # Проверка, что количество продукта в корзине увеличилось
         assert cart.products.get(product) == 2
 
-    def test_remove_product(self, product, cart):
+    def test_remove_product_all(self, product, cart):
         cart.add_product(product)
         cart.remove_product(product)
         # Проверка, что продукт удален из корзины
         assert product not in cart.products
+
+    def test_remove_product_less(self, product, cart):
+        cart.add_product(product, buy_count=5)
+        cart.remove_product(product, remove_count=3)
+        # Проверка, что продукт удален полностью при удалении больше, чем есть в корзине
+        assert cart.products[product] == 2
 
     def test_remove_product_more(self, product, cart):
         cart.add_product(product, buy_count=10)
